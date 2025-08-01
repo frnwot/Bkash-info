@@ -23,6 +23,7 @@ A web interface for checking bKash account information (demo version).
 👨‍💻 **Farhan**  
 📧 Email: [frnbuid2005@gmail.com](mailto:frnbuid2005@gmail.com)  
 🐱 GitHub: [frnwot](https://github.com/frnwot)
+🖇️ url: [url](https://frnwot.github.io/Bkash-info/)
 
 ## Disclaimer
 
