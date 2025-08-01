@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 bKash Account Info Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f4f6f8, #e9eff3);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #e2136e;
+            color: #fff;
+            padding: 25px 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #e2136e;
+            box-shadow: 0 0 0 2px rgba(226, 19, 110, 0.1);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #e2136e;
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c1105f;
+        }
+
+        .response-box {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin: 40px 0;
+        }
+
+        #loadingGif {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .developer-credit {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🔍 bKash Account Info Checker</h1>
+    <p style="margin-top: 6px;">Account Verification Portal</p>
+</div>
+
+<div class="container">
+    <form id="accountForm">
+        <label for="number">📱 bKash Number:</label>
+        <input type="text" id="number" placeholder="01XXXXXXXXX" required>
+
+        <label for="captcha">🧮 10 + 9 = ?</label>
+        <input type="text" id="captcha" placeholder="Enter answer" required>
+
+        <input type="submit" value="Verify Information">
+    </form>
+
+    <div id="loadingGif">
+        <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." width="50">
+        <p>Loading information...</p>
+    </div>
+
+    <div id="responseBox" class="response-box" style="display: none;">
+        <h3>Account Information:</h3>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Account Number</td>
+                <td id="accountNumber">01XXXXXXXXX</td>
+            </tr>
+            <tr>
+                <td>Account Type</td>
+                <td id="accountType">Personal</td>
+            </tr>
+            <tr>
+                <td>Account Status</td>
+                <td id="accountStatus">Active</td>
+            </tr>
+            <tr>
+                <td>Registered Name</td>
+                <td id="registeredName">John Doe</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="errorBox" class="error" style="display: none;">
+        Error: Invalid number or captcha
+    </div>
+</div>
+
+<div class="developer-credit">
+    Developed by Farhan
+</div>
+
+<div class="footer">
+    &copy; Farhan | 2025 bKash Info Tool. All Rights Reserved.
+</div>
+
+<script>
+    document.getElementById('accountForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const number = document.getElementById('number').value;
+        const captcha = document.getElementById('captcha').value;
+        
+        document.getElementById('loadingGif').style.display = 'block';
+        document.getElementById('responseBox').style.display = 'none';
+        document.getElementById('errorBox').style.display = 'none';
+        
+        // Simulate API call
+        setTimeout(function() {
+            document.getElementById('loadingGif').style.display = 'none';
+            
+            if (number.length === 11 && captcha === '19') {
+                // Mock response data
+                document.getElementById('accountNumber').textContent = number;
+                document.getElementById('registeredName').textContent = 'User ' + Math.floor(Math.random() * 1000);
+                document.getElementById('responseBox').style.display = 'block';
+            } else {
+                document.getElementById('errorBox').style.display = 'block';
+            }
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
